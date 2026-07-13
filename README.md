@@ -112,3 +112,40 @@ from app.application import MyApp
 if __name__ == "__main__":
     MyApp().run()
 ```
+# 📝 Conventional Commits
+
+В проекте используется соглашение **Conventional Commits**.
+
+## Основные типы коммитов
+
+| Тип | Назначение | Когда использовать |
+|------|------------|--------------------|
+| **feat** | ✨ Новая функциональность | Добавление новой возможности для пользователя (аналог **MINOR** в SemVer). |
+| **fix** | 🐛 Исправление ошибки | Исправление бага (аналог **PATCH** в SemVer). |
+| **docs** | 📚 Документация | Изменения только в документации (`README.md`, комментарии, Wiki и т.п.). |
+| **style** | 🎨 Форматирование кода | Пробелы, отступы, переносы строк, форматирование без изменения логики программы. |
+| **refactor** | ♻️ Рефакторинг | Улучшение структуры кода без исправления багов и добавления новой функциональности. |
+| **perf** | ⚡ Оптимизация | Улучшение производительности приложения. |
+| **test** | ✅ Тесты | Добавление или изменение тестов. |
+| **build** | 📦 Сборка | Изменения системы сборки, зависимостей, Docker, Gradle, Maven, npm, pip и т.д. |
+| **ci** | 🚀 CI/CD | Изменения в GitHub Actions, GitLab CI, Jenkins Pipeline и других CI/CD-конфигурациях. |
+| **chore** | 🔧 Служебные изменения | Обновление конфигурации, версий библиотек, `.gitignore`, настроек проекта и других изменений, не влияющих на исходный код приложения. |
+| **revert** | ⏪ Откат | Отмена (откат) предыдущего коммита. |
+
+---
+
+## Примеры
+
+```text
+feat: add GPS tracking service
+fix: handle GPS permission denial
+docs: update installation guide
+style: format code with black
+refactor: simplify screen initialization
+perf: optimize map rendering
+test: add unit tests for GPS service
+build: update Kivy dependencies
+ci: add GitHub Actions workflow
+chore: update .gitignore
+revert: revert "feat: add offline maps"
+```
