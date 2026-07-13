@@ -15,7 +15,7 @@ class BottomNavigation(BoxLayout):
         super().__init__(**kwargs)
 
         self.orientation = "horizontal"
-        self.padding = [0, dp(5), 0, dp(5)]
+        self.padding = [0, 0, 0, 0]        
         self.spacing = 0
 
         self.on_tab_selected = on_tab_selected
