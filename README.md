@@ -9,81 +9,82 @@ gps_tracker_app/
 ├── requirements.txt
 ├── README.md
 │
-├── app/
-│   ├── __init__.py
-│   ├── application.py
-│   ├── config.py
-│   └── constants.py
-│
-├── assets/
-│   ├── icons/
-│   │   ├── gps.png
-│   │   ├── layers.png
-│   │   ├── start.png
-│   │   ├── stop.png
-│   │   └── settings.png
-│   │
-│   ├── fonts/
-│   │   └── Roboto-Regular.ttf
-│   │
-│   └── images/
-│       └── app_logo.png
-│
-├── domain/
-│   ├── __init__.py
-│   ├── gps_point.py
-│   ├── workout.py
-│   └── workout_stats.py
-│
-├── services/
-│   ├── __init__.py
-│   ├── gps_service.py
-│   ├── workout_service.py
-│   ├── distance_service.py
-│   ├── pace_service.py
-│   └── timer_service.py
-│
-├── platform_api/
-│   ├── __init__.py
-│   ├── permissions.py
-│   ├── android_permissions.py
-│   └── ios_permissions.py
-│
-├── storage/
-│   ├── __init__.py
-│   ├── database.py
-│   ├── workout_repository.py
-│   └── migrations.py
-│
-├── ui/
-│   ├── __init__.py
-│   │
-│   ├── screens/
-│   │   ├── __init__.py
-│   │   ├── tracker_screen.py
-│   │   ├── history_screen.py
-│   │   ├── workout_detail_screen.py
-│   │   └── settings_screen.py
-│   │
-│   ├── widgets/
-│   │   ├── __init__.py
-│   │   ├── bottom_bar.py
-│   │   ├── circle_button.py
-│   │   ├── stats_panel.py
-│   │   ├── map_widget.py
-│   │   └── route_layer.py
-│   │
-│   └── kv/
-│       ├── tracker_screen.kv
-│       ├── history_screen.kv
-│       ├── settings_screen.kv
-│       └── widgets.kv
-│
-└── utils/
-    ├── __init__.py
-    ├── geo.py
-    ├── time_utils.py
-    └── formatters.py
+└── src/
+    ├── app/
+    │   ├── __init__.py
+    │   ├── application.py
+    │   ├── config.py
+    │   └── constants.py
+    │
+    ├── assets/
+    │   ├── icons/
+    │   │   ├── gps.png
+    │   │   ├── layers.png
+    │   │   ├── start.png
+    │   │   ├── stop.png
+    │   │   └── settings.png
+    │   │
+    │   ├── fonts/
+    │   │   └── Roboto-Regular.ttf
+    │   │
+    │   └── images/
+    │       └── app_logo.png
+    │
+    ├── domain/
+    │   ├── __init__.py
+    │   ├── gps_point.py
+    │   ├── workout.py
+    │   └── workout_stats.py
+    │
+    ├── services/
+    │   ├── __init__.py
+    │   ├── gps_service.py
+    │   ├── workout_service.py
+    │   ├── distance_service.py
+    │   ├── pace_service.py
+    │   └── timer_service.py
+    │
+    ├── platform_api/
+    │   ├── __init__.py
+    │   ├── permissions.py
+    │   ├── android_permissions.py
+    │   └── ios_permissions.py
+    │
+    ├── storage/
+    │   ├── __init__.py
+    │   ├── database.py
+    │   ├── workout_repository.py
+    │   └── migrations.py
+    │
+    ├── ui/
+    │   ├── __init__.py
+    │   │
+    │   ├── screens/
+    │   │   ├── __init__.py
+    │   │   ├── tracker_screen.py
+    │   │   ├── history_screen.py
+    │   │   ├── workout_detail_screen.py
+    │   │   └── settings_screen.py
+    │   │
+    │   ├── widgets/
+    │   │   ├── __init__.py
+    │   │   ├── bottom_bar.py
+    │   │   ├── circle_button.py
+    │   │   ├── stats_panel.py
+    │   │   ├── map_widget.py
+    │   │   └── route_layer.py
+    │   │
+    │   └── kv/
+    │       ├── tracker_screen.kv
+    │       ├── history_screen.kv
+    │       ├── settings_screen.kv
+    │       └── widgets.kv
+    │
+    └── utils/
+        ├── __init__.py
+        ├── geo.py
+        ├── time_utils.py
+        └── formatters.py
 ```
 
 ### Основные директории
