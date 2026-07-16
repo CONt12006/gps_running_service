@@ -1,10 +1,9 @@
 from pathlib import Path
 
-from kivy.app import App
-
+from kivymd.app import MDApp
 from ..ui.screens.rootLayout import RootLayout
 
-class GPSTrackerApp(App):
+class GPSTrackerApp(MDApp):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
     

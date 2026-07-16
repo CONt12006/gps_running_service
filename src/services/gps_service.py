@@ -159,14 +159,14 @@ class GPSService:
         if lat is None or lon is None:
             self._emit_status(f"GPS вернул данные без lat/lon: {kwargs}")
             return
-
+        
         point = GPSPoint(
-            lat=float(lat),
-            lon=float(lon),
-            altitude=self._to_optional_float(kwargs.get("altitude")),
-            speed=self._to_optional_float(kwargs.get("speed")),
-            bearing=self._to_optional_float(kwargs.get("bearing")),
-            accuracy=self._to_optional_float(kwargs.get("accuracy")),
+            latitude=float(kwargs["lat"]),
+            longitude=float(kwargs["lon"]),
+            altitude=kwargs.get("altitude"),
+            speed=kwargs.get("speed"),
+            bearing=kwargs.get("bearing"),
+            accuracy=kwargs.get("accuracy"),
         )
 
         self._emit_location(point)

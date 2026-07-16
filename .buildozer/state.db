@@ -1,1 +1,1 @@
-{"android:sdk_installation": ["33", "24", "28c", "/home/cont1/.buildozer/android/platform/android-sdk", "/home/cont1/.buildozer/android/platform/android-ndk-r28c"]}
+{"android:sdk_installation": ["33", "24", "28c", "/home/cont1/.buildozer/android/platform/android-sdk", "/home/cont1/.buildozer/android/platform/android-ndk-r28c"], "cache.build_id": "13", "android:latestapk": "gpstracker-0.1-arm64-v8a_armeabi-v7a-debug.apk", "android:latestmode": "debug"}
