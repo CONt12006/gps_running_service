@@ -17,9 +17,9 @@ class RootLayout(FloatLayout):
             pos_hint={"x": 0, "y": 0},
         )
 
-        self.screen_manager.add_widget(StartScreen(name = "start"))
+        self.screen_manager.add_widget(StartScreen(name = "main"))
 
-        self.screen_manager.current = "start"
+        self.screen_manager.current = "main"
 
         self.bottom_navigation = BottomNavigation(
             on_tab_selected=self.switch_screen,

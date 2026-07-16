@@ -9,22 +9,31 @@ class BottomNavigation(BoxLayout):
     """Класс создаёт нижнее меню из кнопок"""
     def __init__(
         self,
+
+        # Функция, которая выполняется при нажатии
         on_tab_selected: Callable[[str], None],
         **kwargs
     ):
         super().__init__(**kwargs)
 
         self.orientation = "horizontal"
-        self.padding = [0, 0, 0, 0]        
-        self.spacing = 0
+
+        # Это внутренние отступы между краями BottomNavigation и кнопками
+        self.padding = [0, 0, 0, 0] 
+        # Это расстояние между кнопками
+        self.spacing = 0     
 
         self.on_tab_selected = on_tab_selected
 
         self.add_widget(self._create_nav_button("Прогресс", "progress"))
-        self.add_widget(self._create_nav_button("Начать", "start"))
+        self.add_widget(self._create_nav_button("Главная", "main"))
         self.add_widget(self._create_nav_button("Настройки", "settings"))
 
     def _create_nav_button(self, text: str, screen_name: str) -> Button:
+        """
+        Функция создаёт одну кнопку нижнего меню, 
+        привязывает к ней действие при нажатии и возвращает готовую кнопку
+        """
         button = Button(
             text=text,
             font_size=dp(14),
@@ -34,7 +43,7 @@ class BottomNavigation(BoxLayout):
         )
 
         button.bind(
-            on_press=lambda button: self.on_tab_selected(screen_name)
+            on_press=lambda _: self.on_tab_selected(screen_name)
         )
 
         return button
