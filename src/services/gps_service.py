@@ -37,16 +37,25 @@ class GPSService:
         self._is_running = False
 
 
-    def start(self, min_time: int = 1000, min_distance: int = 1) -> None:
-        """Запускает получение координат"""
+    def start(
+        self,
+        min_time: int = 1000,
+        min_distance: float = 1,
+    ) -> None:
         self._min_time = min_time
         self._min_distance = min_distance
 
         if platform == "android":
             self._request_android_permissions()
             return
-        
-        self._start_gps()
+
+        if platform == "ios":
+            self._start_gps()
+            return
+
+        self._emit_status(
+            "GPS недоступен на этой платформе"
+        )
 
 
     def stop(self):

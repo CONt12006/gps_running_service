@@ -1,22 +1,22 @@
 from pathlib import Path
 
-from kivy.utils import platform
+from kivy.app import App
 
 
 def get_database_path() -> Path:
-    if platform == "android":
-        from android.storage import app_storage_path
+    app = App.get_running_app()
 
-        storage_directory = Path(app_storage_path())
-    else:
-        storage_directory = (
-            Path(__file__).resolve().parents[2]
-            / "data"
+    if app is None:
+        raise RuntimeError(
+            "Приложение ещё не запущено: "
+            "невозможно определить путь к базе"
         )
 
-    storage_directory.mkdir(
+    data_directory = Path(app.user_data_dir)
+
+    data_directory.mkdir(
         parents=True,
         exist_ok=True,
     )
 
-    return storage_directory / "gpstracker.db"
+    return data_directory / "gpstracker.db"

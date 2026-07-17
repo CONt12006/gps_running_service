@@ -2,7 +2,7 @@ from datetime import datetime
 
 from sqlalchemy import select, delete, func
 
-from src.db.database import SessionLocal
+from src.db.database import get_session
 from src.db.models import Runs, RunPoint
 from src.domain.gps_point import GPSPoint
 
@@ -13,7 +13,7 @@ class RunRepository:
 
     def create_run(self, started_at: datetime | None = None) -> int:
         """Создать новую пробежку и вернуть её id"""
-        with SessionLocal() as session:
+        with get_session() as session:
             try:
                 run = Runs(started_at = started_at or datetime.now())
                 session.add(run)
@@ -29,7 +29,7 @@ class RunRepository:
     
     def add_point(self, run_id: int, point: GPSPoint) -> int:
         """Добавить GPS-точку к пробежке"""
-        with SessionLocal() as session:
+        with get_session() as session:
             try:
                 run_point = RunPoint(
                     run_id = run_id,
@@ -53,7 +53,7 @@ class RunRepository:
     
     def finish_run(self, run_id: int, distance: float, duration: int, avg_speed: float, finished_at: datetime | None = None):
         """Завершить пробежку и сохранить итоговые показатели"""
-        with SessionLocal() as session:
+        with get_session() as session:
             try:
                 run = session.get(Runs, run_id)
 
@@ -71,7 +71,7 @@ class RunRepository:
     
     def get_run(self, run_id: int):
         """Получить пробежку по id"""
-        with SessionLocal() as session:
+        with get_session() as session:
             run = session.get(Runs, run_id)
 
             return run
@@ -80,7 +80,7 @@ class RunRepository:
     def get_all_runs(self) -> list[Runs]:
         """Получить все пробежки."""
 
-        with SessionLocal() as session:
+        with get_session() as session:
             statement = (
                 select(Runs)
                 .order_by(Runs.started_at.desc())
@@ -94,7 +94,7 @@ class RunRepository:
     def get_finished_runs(self) -> list[Runs]:
         """Получить только завершённые пробежки."""
 
-        with SessionLocal() as session:
+        with get_session() as session:
             statement = (
                 select(Runs)
                 .where(Runs.finished_at.is_not(None))
@@ -112,11 +112,11 @@ class RunRepository:
 
     def get_run_points(self, run_id: int) -> list[RunPoint]:
         """Получить точки конкретной пробежки"""
-        with SessionLocal() as session:
+        with get_session() as session:
             statement = (
                 select(RunPoint)
                 .where(RunPoint.run_id == run_id)
-                .order_by(RunPoint.recorded_at.asc())
+                .order_by(RunPoint.started_at.asc())
             )
 
         return list(
@@ -126,7 +126,7 @@ class RunRepository:
 
     def delete_run(self, run_id: int) -> None:
         """Удалить пробежку"""
-        with SessionLocal() as session:
+        with get_session() as session:
             try:
                 run = session.get(Runs, run_id)
 
@@ -139,7 +139,7 @@ class RunRepository:
                 raise
 
     def count_runs(self) -> int:
-        with SessionLocal() as session:
+        with get_session() as session:
             statement = select(
                 func.count(Runs.id)
             )
@@ -149,7 +149,7 @@ class RunRepository:
             return int(result or 0)
         
     def delete_all_runs(self) -> None:
-        with SessionLocal() as session:
+        with get_session() as session:
             try:
                 session.execute(
                     delete(Runs)
