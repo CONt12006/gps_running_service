@@ -1,11 +1,16 @@
-from pathlib import Path
-
 from kivymd.app import MDApp
-from ..ui.screens.rootLayout import RootLayout
+
+from src.db.database import create_tables
+from src.db.run_repository import RunRepository
+from src.ui.screens.rootLayout import RootLayout
+
 
 class GPSTrackerApp(MDApp):
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-    
-    def build(self):
-        return RootLayout()
+    def build(self) -> RootLayout:
+        create_tables()
+
+        run_repository = RunRepository()
+
+        return RootLayout(
+            run_repository=run_repository,
+        )

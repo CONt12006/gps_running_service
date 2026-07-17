@@ -152,7 +152,7 @@ class BottomNavigation(BoxLayout):
             screen_name="settings",
         )
 
-        self.set_active_tab("start")
+        self.set_active_tab("main")
 
     def _add_tab(
         self,

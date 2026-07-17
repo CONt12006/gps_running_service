@@ -5,6 +5,8 @@ from kivy_garden.mapview.geojson import GeoJsonMapLayer
 
 from src.domain.gps_point import GPSPoint
 from src.services.gps_service import GPSService
+from src.services.tracking_service import TrackingService
+from src.db.run_repository import RunRepository
 
 from ..widgets.bottom_start import BottomStart
 
@@ -16,10 +18,16 @@ from time import perf_counter
 class StartScreen(Screen):
     """Основной экран с картой и управлением GPS-трекингом."""
 
-    def __init__(self, **kwargs):
+    def __init__(self, repository: RunRepository, **kwargs):
         super().__init__(**kwargs)
 
         self.is_tracking = False
+
+        self._run_repository = repository
+
+        self._tracking_service = TrackingService(
+            repository=self._run_repository,
+        )
 
         # Фильтрация GPS
         self.max_accuracy = 17.0
@@ -359,7 +367,10 @@ class StartScreen(Screen):
     def start_tracking(self) -> None:
         """Начинает запись GPS-маршрута."""
 
+        run_id = self._tracking_service.start_running()
+
         print("Начинаем GPS-трекинг")
+        print(f"Пробежка началась: run_id={run_id}")
 
         self.route_points.clear()
         self.route_coordinates.clear()
@@ -387,6 +398,7 @@ class StartScreen(Screen):
 
         self.is_tracking = False
         self.gps_service.stop()
+        self._tracking_service.finish_running()
         self.start_button.text = "Начать"
 
         print(
@@ -406,6 +418,13 @@ class StartScreen(Screen):
             f"lon={point.longitude}, "
             f"accuracy={point.accuracy}"
         )
+
+        accepted = self._tracking_service.handle_gps_point(
+            point
+        )
+
+        if accepted:
+            self._update_map(point)
 
         if not self.is_tracking:
             return
@@ -466,12 +485,4 @@ class StartScreen(Screen):
         print(f"GPS STATUS: {message}")
 
     def on_leave(self, *args) -> None:
-        """
-        Вызывается Kivy, когда пользователь уходит с экрана.
-
-        Останавливаем GPS, чтобы он не продолжал работать
-        в фоне после ухода с экрана.
-        """
-
-        if self.is_tracking:
-            self.stop_tracking()
+        pass
