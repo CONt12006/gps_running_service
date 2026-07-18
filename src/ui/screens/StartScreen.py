@@ -408,8 +408,10 @@ class StartScreen(Screen):
 
     def on_gps_location(self, point: GPSPoint) -> None:
         """
-        Вызывается GPSService каждый раз,
-        когда приходит новая GPS-точка.
+        Получает GPS-точку от GPSService.
+
+        TrackingService проверяет и сохраняет точку.
+        Если точка принята, обновляем карту.
         """
 
         print(
@@ -419,45 +421,55 @@ class StartScreen(Screen):
             f"accuracy={point.accuracy}"
         )
 
+        if not self.is_tracking:
+            return
+
         accepted = self._tracking_service.handle_gps_point(
             point
         )
 
-        if accepted:
-            self._update_map(point)
-
-        if not self.is_tracking:
+        if not accepted:
             return
 
-        received_at = perf_counter()
+        self._update_map(point)
 
-        if not self.is_valid_route_point(
-            point,
-            received_at,
-        ):
-            return
 
-        # Сохраняем настоящую принятую точку
+    def _update_map(self, point: GPSPoint) -> None:
+        """
+        Добавляет принятую GPS-точку в отображаемый маршрут
+        и обновляет маркер пользователя.
+        """
+
         self.route_points.append(point)
-        self.last_accepted_at = received_at
 
-        # Сглаживаем только координату для линии
-        display_point = self.smooth_display_point(point)
+        display_point = self.smooth_display_point(
+            point
+        )
 
-        self.route_coordinates.append([
-            float(display_point.longitude),
-            float(display_point.latitude),
-        ])
+        self.route_coordinates.append(
+            [
+                float(display_point.longitude),
+                float(display_point.latitude),
+            ]
+        )
 
-        self.update_user_marker(display_point)
+        self.update_user_marker(
+            display_point
+        )
+
         self.update_route()
+
+        accuracy_text = (
+            f"{point.accuracy:.1f} м"
+            if point.accuracy is not None
+            else "неизвестна"
+        )
 
         print(
             f"GPS POINT ACCEPTED: "
             f"points={len(self.route_points)}, "
-            f"accuracy={point.accuracy:.1f} м"
+            f"accuracy={accuracy_text}"
         )
-
 
     def update_user_marker(self, point: GPSPoint) -> None:
         if self.user_marker is None:

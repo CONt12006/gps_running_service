@@ -116,7 +116,7 @@ class RunRepository:
             statement = (
                 select(RunPoint)
                 .where(RunPoint.run_id == run_id)
-                .order_by(RunPoint.started_at.asc())
+                .order_by(RunPoint.id.asc())
             )
 
         return list(
