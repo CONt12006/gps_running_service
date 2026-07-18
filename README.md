@@ -1,5 +1,5 @@
 # GPS Tracker
-
+ 
 Мобильное приложение для записи пробежек, построения GPS-маршрута и просмотра истории тренировок.
 
 [![Python](https://img.shields.io/badge/Python-3.12-3776AB?logo=python\&logoColor=white)](https://www.python.org/)
