@@ -6,3 +6,8 @@ cache/
 bin/
 *.pyc
 data/
+# Android build artifacts
+*.apk
+*.aab
+bin/
+.buildozer/
