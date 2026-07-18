@@ -60,7 +60,7 @@ class TrackingService:
     
 
     def handle_gps_point(self, point: GPSPoint) -> bool:
-        if not self._is_running:
+        if not self._is_running():
             return False
 
         if self._is_paused:

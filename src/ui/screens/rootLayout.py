@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from kivy.metrics import dp
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.screenmanager import NoTransition, ScreenManager
@@ -14,11 +16,13 @@ class RootLayout(FloatLayout):
     def __init__(
         self,
         run_repository: RunRepository,
+        data_directory: Path,
         **kwargs,
     ):
         super().__init__(**kwargs)
 
         self._run_repository = run_repository
+        self._data_directory = Path(data_directory)
 
         self.screen_manager = ScreenManager(
             transition=NoTransition(),
@@ -29,12 +33,6 @@ class RootLayout(FloatLayout):
             },
         )
 
-        self.screen_manager.add_widget(
-            StartScreen(
-                name="main",
-                repository=self._run_repository,
-            )
-        )
 
         self.screen_manager.add_widget(
             ProgressScreen(
@@ -54,6 +52,15 @@ class RootLayout(FloatLayout):
             SettingsScreen(
                 name="settings",
                 repository=self._run_repository,
+            )
+        )
+
+
+        self.screen_manager.add_widget(
+            StartScreen(
+                name="main",
+                repository=self._run_repository,
+                data_directory=data_directory,
             )
         )
 
