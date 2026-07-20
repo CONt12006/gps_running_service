@@ -234,7 +234,6 @@ class RunRepository:
 
                 session.delete(run)
                 session.commit()
-                session.refresh()
 
             except Exception:
                 session.rollback()

@@ -139,4 +139,4 @@ class TrackingService:
         self._points_count = 0
         self._is_paused = False
 
-    
+

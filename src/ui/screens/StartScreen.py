@@ -7,7 +7,7 @@ from kivy_garden.mapview.geojson import GeoJsonMapLayer
 
 from src.domain.gps_point import GPSPoint
 from src.services.gps_service import GPSService
-from src.services.tracking_service import TrackingService
+from tracking_service import TrackingService
 from src.db.run_repository import RunRepository
 
 from ..widgets.bottom_start import BottomStart
@@ -82,19 +82,27 @@ class StartScreen(Screen):
 
         map_source = MapSource(
             url="https://tile.openstreetmap.org/{z}/{x}/{y}.png",
-            cache_key="osm",
+            cache_key="osm_https_v2",
             min_zoom=0,
             max_zoom=19,
+            tile_size=256,
+            image_ext="png",
             attribution="© OpenStreetMap contributors",
         )
 
         self.map_view = MapView(
-            map_source=map_source,
             lat=55.7558,
             lon=37.6173,
             zoom=10,
             size_hint=(1, 1),
             pos_hint={"x": 0, "y": 0},
+        )
+
+        self.map_view.map_source = map_source
+
+        print(
+            "MAP SOURCE:",
+            self.map_view.map_source.url,
         )
 
         self.route_layer = GeoJsonMapLayer()

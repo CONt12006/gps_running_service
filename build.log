@@ -1,0 +1,154 @@
+# Ensure build layout
+# Check configuration tokens
+# Preparing build
+# Check requirements for android
+# Search for Git (git)
+#  -> found at /usr/bin/git
+# Search for Cython (cython)
+#  -> found at /home/cont1/Desktop/Cake_Programmer/Python/gps_running_service/.venv/bin/cython
+# Search for Java compiler (javac)
+#  -> found at /usr/bin/javac
+# Search for Java keytool (keytool)
+#  -> found at /usr/bin/keytool
+# Install platform
+# Run 'git config --get remote.origin.url' ...
+# Cwd /home/cont1/Desktop/Cake_Programmer/Python/gps_running_service/.buildozer/android/platform/python-for-android
+https://github.com/kivy/python-for-android.git
+# Run 'git branch -vv' ...
+# Cwd /home/cont1/Desktop/Cake_Programmer/Python/gps_running_service/.buildozer/android/platform/python-for-android
+* master 58d21141 [origin/master] Merge pull request #3321 from kivy/release-2026.05.09
+# Run '/home/cont1/Desktop/Cake_Programmer/Python/gps_running_service/.venv/bin/python -m pip install -q appdirs colorama>=0.3.3 jinja2 sh>=2, <3.0; sys_platform!="win32" meson ninja build toml packaging setuptools wheel~=0.43.0' ...
+# Cwd None
+# Apache ANT found at /home/cont1/.buildozer/android/platform/apache-ant-1.9.4
+# Android SDK found at /home/cont1/.buildozer/android/platform/android-sdk
+# Recommended android's NDK version by p4a is: 28c
+# Android NDK found at /home/cont1/.buildozer/android/platform/android-ndk-r28c
+# Installing/updating SDK platform tools if necessary
+# Run '/home/cont1/.buildozer/android/platform/android-sdk/tools/bin/sdkmanager --sdk_root=/home/cont1/.buildozer/android/platform/android-sdk platform-tools --proxy=http --proxy_host=127.0.0.1 --proxy_port=12334/' ...
+# Cwd /home/cont1/.buildozer/android/platform/android-sdk
+Warning: Invalid port "12334/"
+Warning: Could not create settings
+java.lang.IllegalArgumentException
+	at com.android.sdklib.tool.sdkmanager.SdkManagerCliSettings.<init>(SdkManagerCliSettings.java:390)
+	at com.android.sdklib.tool.sdkmanager.SdkManagerCliSettings.createSettings(SdkManagerCliSettings.java:152)
+	at com.android.sdklib.tool.sdkmanager.SdkManagerCliSettings.createSettings(SdkManagerCliSettings.java:134)
+	at com.android.sdklib.tool.sdkmanager.SdkManagerCli.main(SdkManagerCli.java:57)
+	at com.android.sdklib.tool.sdkmanager.SdkManagerCli.main(SdkManagerCli.java:48)
+Usage:
+  sdkmanager [--uninstall] [<common args>] [--package_file=<file>] [<packages>...]
+  sdkmanager --update [<common args>]
+  sdkmanager --list [<common args>]
+  sdkmanager --licenses [<common args>]
+  sdkmanager --version
+
+With --install (optional), installs or updates packages.
+    By default, the listed packages are installed or (if already installed)
+    updated to the latest version.
+With --uninstall, uninstall the listed packages.
+
+    <package> is a sdk-style path (e.g. "build-tools;23.0.0" or
+             "platforms;android-23").
+    <package-file> is a text file where each line is a sdk-style path
+                   of a package to install or uninstall.
+    Multiple --package_file arguments may be specified in combination
+    with explicit paths.
+
+With --update, all installed packages are updated to the latest version.
+
+With --list, all installed and available packages are printed out.
+
+With --licenses, show and offer the option to accept licenses for all
+     available packages that have not already been accepted.
+
+With --version, prints the current version of sdkmanager.
+
+Common Arguments:
+    --sdk_root=<sdkRootPath>: Use the specified SDK root instead of the SDK
+                              containing this tool
+
+    --channel=<channelId>: Include packages in channels up to <channelId>.
+                           Common channels are:
+                           0 (Stable), 1 (Beta), 2 (Dev), and 3 (Canary).
+
+    --include_obsolete: With --list, show obsolete packages in the
+                        package listing. With --update, update obsolete
+                        packages as well as non-obsolete.
+
+    --no_https: Force all connections to use http rather than https.
+
+    --proxy=<http | socks>: Connect via a proxy of the given type.
+
+    --proxy_host=<IP or DNS address>: IP or DNS address of the proxy to use.
+
+    --proxy_port=<port #>: Proxy port to connect to.
+
+    --verbose: Enable verbose output.
+
+* If the env var REPO_OS_OVERRIDE is set to "windows",
+  "macosx", or "linux", packages will be downloaded for that OS.
+# Command failed: ('/home/cont1/.buildozer/android/platform/android-sdk/tools/bin/sdkmanager', '--sdk_root=/home/cont1/.buildozer/android/platform/android-sdk', 'platform-tools', '--proxy=http', '--proxy_host=127.0.0.1', '--proxy_port=12334/')
+# Error code: 1
+# ENVIRONMENT:
+#     SYSTEMD_EXEC_PID = '3471'
+#     SSH_AUTH_SOCK = '/run/user/1000/keyring/ssh'
+#     SESSION_MANAGER = 'local/karuch:@/tmp/.ICE-unix/3181,unix/karuch:/tmp/.ICE-unix/3181'
+#     all_proxy = 'socks://127.0.0.1:12334/'
+#     GNOME_TERMINAL_SCREEN = '/org/gnome/Terminal/screen/7a0ce2ba_9519_4de3_872c_f20008355861'
+#     XDG_CURRENT_DESKTOP = 'ubuntu:GNOME'
+#     HTTP_PROXY = 'http://127.0.0.1:12334/'
+#     WAYLAND_DISPLAY = 'wayland-0'
+#     ALL_PROXY = 'socks://127.0.0.1:12334/'
+#     LANG = 'ru_RU.UTF-8'
+#     XDG_SESSION_CLASS = 'user'
+#     COLORTERM = 'truecolor'
+#     QT_IM_MODULE = 'ibus'
+#     USER = 'cont1'
+#     HOME = '/home/cont1'
+#     XDG_MENU_PREFIX = 'gnome-'
+#     NO_PROXY = 'localhost,127.0.0.0/8,::1'
+#     PWD = '/home/cont1/Desktop/Cake_Programmer/Python/gps_running_service'
+#     OLDPWD = '/home/cont1/Desktop/Cake_Programmer/Python/gps_running_service'
+#     DESKTOP_SESSION = 'ubuntu'
+#     DBUS_SESSION_BUS_ADDRESS = 'unix:path=/run/user/1000/bus'
+#     http_proxy = 'http://127.0.0.1:12334/'
+#     XDG_DATA_DIRS = '/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'
+#     GTK_MODULES = 'gail:atk-bridge'
+#     VTE_VERSION = '7600'
+#     XDG_SESSION_DESKTOP = 'ubuntu'
+#     GSM_SKIP_SSH_AGENT_WORKAROUND = 'true'
+#     QT_ACCESSIBILITY = '1'
+#     GNOME_DESKTOP_SESSION_ID = 'this-is-deprecated'
+#     GNOME_SETUP_DISPLAY = ':1'
+#     LOGNAME = 'cont1'
+#     GNOME_TERMINAL_SERVICE = ':1.161'
+#     no_proxy = 'localhost,127.0.0.0/8,::1'
+#     MEMORY_PRESSURE_WRITE = 'c29tZSAyMDAwMDAgMjAwMDAwMAA='
+#     XMODIFIERS = '@im=ibus'
+#     PATH = '/home/cont1/.buildozer/android/platform/apache-ant-1.9.4/bin:/home/cont1/Desktop/Cake_Programmer/Python/gps_running_service/.venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'
+#     SHELL = '/usr/bin/zsh'
+#     XDG_SESSION_TYPE = 'wayland'
+#     GNOME_SHELL_SESSION_MODE = 'ubuntu'
+#     XDG_RUNTIME_DIR = '/run/user/1000'
+#     USERNAME = 'cont1'
+#     ftp_proxy = 'http://127.0.0.1:12334/'
+#     HTTPS_PROXY = 'http://127.0.0.1:12334/'
+#     FTP_PROXY = 'http://127.0.0.1:12334/'
+#     GNOME_KEYRING_CONTROL = '/run/user/1000/keyring'
+#     XAUTHORITY = '/run/user/1000/.mutter-Xwaylandauth.NMARS3'
+#     _ = '/home/cont1/Desktop/Cake_Programmer/Python/gps_running_service/.venv/bin/buildozer'
+#     MEMORY_PRESSURE_WATCH = '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.SettingsDaemon.MediaKeys.service/memory.pressure'
+#     TERM = 'xterm-256color'
+#     GDMSESSION = 'ubuntu'
+#     DISPLAY = ':0'
+#     https_proxy = 'http://127.0.0.1:12334/'
+#     SHLVL = '1'
+#     LS_COLORS = 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:'
+#     VIRTUAL_ENV = '/home/cont1/Desktop/Cake_Programmer/Python/gps_running_service/.venv'
+#     PS1 = '%K{blue}%n@%m%k %B%F{green}%175<...<%~\n%{\r%}%F{white} %# %b%f%k'
+#     VIRTUAL_ENV_PROMPT = '(.venv) '
+# 
+# Buildozer failed to execute the last command
+# The error might be hidden in the log above this error
+# Please read the full log, and search for it before
+# raising an issue with buildozer itself.
+# In case of a bug report, please add a full log with log_level = 2

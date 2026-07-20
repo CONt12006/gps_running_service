@@ -161,9 +161,6 @@ class AndroidTrackingServiceController:
 
         service_class.start(
             activity,
-            "",
-            "GPS Tracker",
-            "Маршрут записывается в фоне",
             argument,
         )
 
