@@ -5,7 +5,7 @@ package.name = gpstracker
 package.domain = org.example
 orientation = portrait
 
-services = tracking:tracking_service.py:foreground:foregroundServiceType=location
+services = tracking:src/services/tracking.py:foreground:foregroundServiceType=location
 source.dir = .
 source.include_exts = py,png,jpg,jpeg,kv,atlas,json,ttf
 source.exclude_dirs = .git,.venv,.buildozer,bin,cache,__pycache__

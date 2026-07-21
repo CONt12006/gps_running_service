@@ -227,10 +227,15 @@ class RunRepository:
                 raise
 
     def delete_run(self, run_id: int) -> None:
-        """Удалить пробежку"""
         with get_session() as session:
             try:
-                run = session.get(Runs, run_id)
+                run = session.get(
+                    Runs,
+                    run_id,
+                )
+
+                if run is None:
+                    return
 
                 session.delete(run)
                 session.commit()

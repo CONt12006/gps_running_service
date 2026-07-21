@@ -27,6 +27,9 @@ REQUIRED_GOOD_FIXES = 3
 MIN_ROUTE_DISTANCE = 5.0
 MAX_RUNNING_SPEED = 8.0
 
+def log(message: str) -> None:
+    print(message, flush=True)
+
 
 def optional_float(value) -> float | None:
     if value is None:
@@ -69,22 +72,51 @@ def calculate_distance(
 
 
 def main() -> None:
+    log("BACKGROUND ENTRYPOINT STARTED")
+
     raw_argument = os.environ.get(
         "PYTHON_SERVICE_ARGUMENT",
-        "{}",
+        "",
     )
 
-    argument = json.loads(raw_argument)
+    log(
+        "BACKGROUND ARGUMENT: "
+        f"{raw_argument!r}"
+    )
+
+    if not raw_argument:
+        raise RuntimeError(
+            "PYTHON_SERVICE_ARGUMENT отсутствует"
+        )
+
+    try:
+        argument = json.loads(raw_argument)
+    except json.JSONDecodeError as error:
+        raise RuntimeError(
+            "Некорректный JSON в "
+            "PYTHON_SERVICE_ARGUMENT"
+        ) from error
 
     run_id = int(argument["run_id"])
-    database_path = Path(argument["database_path"])
-    state_path = Path(argument["state_path"])
+    database_path = Path(
+        argument["database_path"]
+    )
+    state_path = Path(
+        argument["state_path"]
+    )
 
     min_time = int(
         argument.get("min_time", 1000)
     )
     min_distance = float(
         argument.get("min_distance", 1.0)
+    )
+
+    log(
+        "BACKGROUND PARAMETERS OK: "
+        f"run_id={run_id}, "
+        f"database={database_path}, "
+        f"state={state_path}"
     )
 
     state_store = TrackingStateStore(state_path)
@@ -268,6 +300,8 @@ def main() -> None:
             minDistance=min_distance,
         )
 
+        log("BACKGROUND GPS STARTED")
+
         while True:
             state = state_store.read()
 
@@ -327,4 +361,16 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+
+    except BaseException as error:
+        print(
+            "BACKGROUND FATAL ERROR: "
+            f"{type(error).__name__}: {error}",
+            flush=True,
+        )
+
+        traceback.print_exc()
+        time.sleep(3)
+        raise

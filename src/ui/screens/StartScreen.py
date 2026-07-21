@@ -529,20 +529,13 @@ class StartScreen(Screen):
                 run_id
             )
 
-            try:
-                self._android_service.stop()
-            except Exception as error:
-                self.on_gps_status(
-                    f"Ошибка остановки service: {error}"
-                )
-
             Clock.schedule_once(
                 lambda _dt: (
                     self._finish_android_tracking(
                         run_id
                     )
                 ),
-                1.0,
+                1.5,
             )
 
             return
@@ -562,10 +555,16 @@ class StartScreen(Screen):
         run_id: int,
     ) -> None:
         try:
-            # Забираем последние точки из базы.
+            try:
+                self._android_service.stop()
+            except Exception as error:
+                self.on_gps_status(
+                    "Ошибка остановки service: "
+                    f"{error}"
+                )
+
             self._poll_background_points()
 
-            # Считаем дистанцию и скорость.
             self._run_repository.finalize_run_from_points(
                 run_id
             )
