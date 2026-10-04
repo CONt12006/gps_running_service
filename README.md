@@ -1,269 +1,44 @@
 # GPS Tracker
- 
-Мобильное приложение для записи пробежек, построения GPS-маршрута и просмотра истории тренировок.
 
-[![Python](https://img.shields.io/badge/Python-3.12-3776AB?logo=python\&logoColor=white)](https://www.python.org/)
+Мобильное Android-приложение для записи пробежек, фонового GPS-трекинга, построения маршрутов и просмотра истории тренировок.
+
+> **Статус проекта:** приложение проходит закрытое тестирование в Google Play перед публичной публикацией.
+
+[![Python](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![Kivy](https://img.shields.io/badge/Kivy-2.3.1-4A4A4A)](https://kivy.org/)
-[![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-2.0-D71F00?logo=sqlalchemy\&logoColor=white)](https://www.sqlalchemy.org/)
-[![SQLite](https://img.shields.io/badge/SQLite-local-003B57?logo=sqlite\&logoColor=white)](https://www.sqlite.org/)
-[![Android](https://img.shields.io/badge/Android-8.0%2B-3DDC84?logo=android\&logoColor=white)](https://www.android.com/)
+[![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-2.0-D71F00?logo=sqlalchemy&logoColor=white)](https://www.sqlalchemy.org/)
+[![SQLite](https://img.shields.io/badge/SQLite-local-003B57?logo=sqlite&logoColor=white)](https://www.sqlite.org/)
+[![Android](https://img.shields.io/badge/Android-8.0%2B-3DDC84?logo=android&logoColor=white)](https://www.android.com/)
 [![Release](https://img.shields.io/github/v/release/CONt12006/gps_running_service)](https://github.com/CONt12006/gps_running_service/releases/latest)
-[![Status](https://img.shields.io/badge/status-active_development-orange)](https://github.com/CONt12006/gps_running_service)
+[![Google Play](https://img.shields.io/badge/Google_Play-Closed_Testing-orange?logo=googleplay&logoColor=white)](#)
 
 ---
 
 ## Скачать приложение
 
-Готовую тестовую версию GPS Tracker для Android можно скачать на странице последнего релиза:
+GPS Tracker сейчас проходит **закрытое тестирование в Google Play** перед публичным релизом.
 
-[![Скачать APK](https://img.shields.io/badge/Android-Скачать_APK-3DDC84?style=for-the-badge\&logo=android\&logoColor=white)](https://github.com/CONt12006/gps_running_service/releases/latest)
+Для установки тестовой версии вручную доступен APK на странице последнего GitHub Release:
+
+[![Скачать APK](https://img.shields.io/badge/Android-Скачать_APK-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://github.com/CONt12006/gps_running_service/releases/latest)
 
 **Текущая версия:** `v0.1.0`
 
 ### Требования
 
-* Android 8.0 или новее;
-* разрешение на доступ к геолокации;
-* включённая геолокация на устройстве;
-* разрешение на установку приложений из сторонних источников.
+- Android 8.0 или новее;
+- доступ к геолокации;
+- включённая геолокация на устройстве;
+- для GitHub APK — разрешение на установку приложений из сторонних источников.
 
+---
 
 ## О проекте
 
-**GPS Tracker** — мобильное приложение для отслеживания пробежек, написанное на Python с использованием Kivy.
+**GPS Tracker** — самостоятельное Android-приложение для записи беговых тренировок и GPS-маршрутов, разработанное на Python с использованием Kivy/KivyMD.
 
-Приложение получает GPS-координаты устройства, отображает текущее положение на карте, строит пройденный маршрут и сохраняет информацию о тренировках в локальную SQLite-базу данных.
+Приложение получает координаты устройства, отображает текущее положение на карте, записывает маршрут в фоновом режиме и сохраняет историю тренировок в локальной SQLite-базе данных.
 
-Проект разрабатывается с упором на:
+Проект построен с разделением UI, бизнес-логики, persistence и платформозависимого Android-кода. Фоновый трекинг реализован через Android `LocationManager`, foreground service и WakeLock.
 
-* разделение пользовательского интерфейса и бизнес-логики;
-* изоляцию Android-зависимого кода;
-* локальное хранение пользовательских данных;
-* возможность дальнейшего расширения функциональности;
-* поддержку фонового GPS-трекинга;
-* понятную и масштабируемую архитектуру.
-
----
-
-## Основные возможности
-
-В приложении реализованы:
-
-* получение GPS-координат устройства;
-* запрос разрешений на доступ к геолокации;
-* отображение текущего положения на карте;
-* запуск и остановка тренировки;
-* построение пройденного GPS-маршрута;
-* расчёт продолжительности тренировки;
-* расчёт пройденной дистанции;
-* сохранение пробежек в SQLite;
-* сохранение отдельных GPS-точек маршрута;
-* просмотр истории тренировок;
-* просмотр подробной информации о пробежке;
-* отображение сохранённого маршрута;
-* хранение пользовательских настроек;
-* переключение между экранами через нижнюю навигационную панель;
-* сборка Android-приложения в APK.
-
----
-
-## Используемые технологии
-
-| Технология          | Назначение                                    |
-| ------------------- | --------------------------------------------- |
-| Python              | Основной язык разработки                      |
-| Kivy                | Кроссплатформенный пользовательский интерфейс |
-| KivyMD              | Material Design-компоненты                    |
-| Plyer               | Доступ к GPS и функциям мобильного устройства |
-| Kivy Garden MapView | Отображение карты, маршрута и GPS-маркеров    |
-| SQLAlchemy 2.0      | ORM и взаимодействие с базой данных           |
-| SQLite              | Локальное хранение пробежек и GPS-точек       |
-| Buildozer           | Сборка Android-приложения                     |
-| python-for-android  | Формирование APK из Python-проекта            |
-| Android API         | Разрешения, геолокация и фоновые сервисы      |
-
----
-
-## Архитектура
-
-Проект разделён на несколько слоёв:
-
-```text
-UI
- │
- ▼
-Services
- │
- ├──────────────► Domain
- │
- ├──────────────► Database
- │
- └──────────────► Platform API
-```
-
-### UI
-
-Содержит:
-
-* экраны приложения;
-* кнопки;
-* нижнюю навигацию;
-* карту;
-* маркеры;
-* элементы отображения маршрута.
-
-UI передаёт пользовательские действия сервисному слою и отображает полученный результат.
-
-### Services
-
-Сервисный слой содержит основную бизнес-логику:
-
-* запуск и остановку тренировки;
-* обработку GPS-координат;
-* управление состоянием трекинга;
-* расчёт параметров пробежки;
-* передачу данных между UI и репозиторием;
-* сохранение результатов тренировки.
-
-### Domain
-
-Содержит модели предметной области, которые не зависят от Kivy, SQLAlchemy или Android API.
-
-Например, `GPSPoint` описывает одну GPS-точку маршрута.
-
-### Database
-
-Слой базы данных отвечает за:
-
-* создание SQLAlchemy Engine;
-* настройку сессий;
-* описание ORM-моделей;
-* сохранение пробежек;
-* сохранение GPS-точек;
-* получение истории тренировок;
-* удаление и очистку данных.
-
-### Platform API
-
-Содержит код, который зависит от конкретной операционной системы.
-
-Android-интеграция изолирована от UI и основной бизнес-логики. Благодаря этому платформенный код можно изменять отдельно от остальных частей приложения.
-
----
-
-## Структура проекта
-
-```text
-gps_running_service/
-├── main.py
-├── README.md
-├── requirements.txt
-├── buildozer.spec
-├── .gitignore
-│
-└── src/
-    ├── app/
-    │   ├── __init__.py
-    │   └── application.py
-    │
-    ├── assets/
-    │   └── __init__.py
-    │
-    ├── db/
-    │   ├── __init__.py
-    │   ├── database_path.py
-    │   ├── database.py
-    │   ├── models.py
-    │   └── run_repository.py
-    │
-    ├── domain/
-    │   ├── __init__.py
-    │   └── gps_point.py
-    │
-    ├── platform_api/
-    │   ├── __init__.py
-    │   └── android_tracking_service.py
-    │
-    ├── services/
-    │   ├── __init__.py
-    │   ├── gps_service.py
-    │   ├── settings_service.py
-    │   ├── tracking.py
-    │   ├── tracking_service.py
-    │   └── tracking_state_store.py
-    │
-    ├── ui/
-    │   ├── __init__.py
-    │   │
-    │   ├── screens/
-    │   │   ├── __init__.py
-    │   │   ├── rootLayout.py
-    │   │   ├── StartScreen.py
-    │   │   ├── ProgressScreen.py
-    │   │   ├── RunDetailScreen.py
-    │   │   └── SettingsScreen.py
-    │   │
-    │   └── widgets/
-    │       ├── __init__.py
-    │       ├── bottom_navigation.py
-    │       ├── bottom_start.py
-    │       ├── route_map_layer.py
-    │       └── route_marker.py
-    │
-    └── utils/
-        └── __init__.py
-```
-
-### Назначение основных файлов
-
-| Файл                          | Назначение                                   |
-| ----------------------------- | -------------------------------------------- |
-| `main.py`                     | Точка входа в приложение                     |
-| `application.py`              | Создание и запуск Kivy-приложения            |
-| `gps_service.py`              | Получение и обработка GPS-координат          |
-| `tracking_service.py`         | Основная логика тренировки                   |
-| `tracking_state_store.py`     | Хранение текущего состояния трекинга         |
-| `android_tracking_service.py` | Android-зависимая логика фонового трекинга   |
-| `run_repository.py`           | Работа с пробежками в базе данных            |
-| `models.py`                   | SQLAlchemy ORM-модели                        |
-| `database.py`                 | Настройка Engine и Session                   |
-| `database_path.py`            | Формирование платформозависимого пути к базе |
-| `StartScreen.py`              | Главный экран и карта                        |
-| `ProgressScreen.py`           | История тренировок                           |
-| `RunDetailScreen.py`          | Подробная информация о пробежке              |
-| `SettingsScreen.py`           | Пользовательские настройки                   |
-| `rootLayout.py`               | Корневой контейнер, зависимости и навигация  |
-
-
----
-
-## Безопасность данных
-
-Все тренировки и настройки сохраняются локально на устройстве.
-
-Текущая версия приложения:
-
-* не требует регистрации;
-* не отправляет историю тренировок на внешний сервер;
-* не использует облачное хранение;
-* не передаёт GPS-маршруты другим пользователям.
-
-При удалении приложения локальные данные могут быть удалены операционной системой.
-
----
-
-## Автор
-
-Проект разработан как самостоятельный pet-проект для изучения:
-
-* мобильной разработки на Python;
-* Kivy и KivyMD;
-* архитектуры приложений;
-* работы с GPS;
-* Android API;
-* SQLAlchemy и SQLite;
-* управления состоянием;
-* построения маршрутов;
-* сборки мобильных приложений.
-
-GitHub: [@CONt12006](https://github.com/CONt12006)
+Приложение находится на этапе закрытого тестирования в Google Play перед публичной публикацией.
