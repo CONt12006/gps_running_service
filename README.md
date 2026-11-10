@@ -1,8 +1,13 @@
+<p align="center">
+  <a href="README.md"><img alt="English" src="https://img.shields.io/badge/English-1f6feb?style=for-the-badge"></a>
+  <a href="README.ru.md"><img alt="Русский" src="https://img.shields.io/badge/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9-555555?style=for-the-badge"></a>
+</p>
+
 # GPS Tracker
 
-Мобильное Android-приложение для записи пробежек, фонового GPS-трекинга, построения маршрутов и просмотра истории тренировок.
+An Android app for recording runs, background GPS tracking, drawing routes and browsing workout history.
 
-> **Статус проекта:** приложение проходит закрытое тестирование в Google Play перед публичной публикацией.
+> **Project status:** the app is in closed testing on Google Play ahead of its public release.
 
 [![Python](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![Kivy](https://img.shields.io/badge/Kivy-2.3.1-4A4A4A)](https://kivy.org/)
@@ -14,31 +19,31 @@
 
 ---
 
-## Скачать приложение
+## Download
 
-GPS Tracker сейчас проходит **закрытое тестирование в Google Play** перед публичным релизом.
+GPS Tracker is currently in **closed testing on Google Play** ahead of its public release.
 
-Для установки тестовой версии вручную доступен APK на странице последнего GitHub Release:
+To install the test build manually, an APK is available on the latest GitHub Release page:
 
-[![Скачать APK](https://img.shields.io/badge/Android-Скачать_APK-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://github.com/CONt12006/gps_running_service/releases/latest)
+[![Download APK](https://img.shields.io/badge/Android-Download_APK-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://github.com/CONt12006/gps_running_service/releases/latest)
 
-**Текущая версия:** `v0.1.0`
+**Current version:** `v0.1.0`
 
-### Требования
+### Requirements
 
-- Android 8.0 или новее;
-- доступ к геолокации;
-- включённая геолокация на устройстве;
-- для GitHub APK — разрешение на установку приложений из сторонних источников.
+- Android 8.0 or newer;
+- location permission;
+- location turned on on the device;
+- for the GitHub APK: permission to install apps from unknown sources.
 
 ---
 
-## О проекте
+## About
 
-**GPS Tracker** — самостоятельное Android-приложение для записи беговых тренировок и GPS-маршрутов, разработанное на Python с использованием Kivy/KivyMD.
+**GPS Tracker** is a standalone Android app for recording running workouts and GPS routes, built in Python with Kivy/KivyMD.
 
-Приложение получает координаты устройства, отображает текущее положение на карте, записывает маршрут в фоновом режиме и сохраняет историю тренировок в локальной SQLite-базе данных.
+The app gets the device's coordinates, shows the current position on a map, records the route in the background and stores workout history in a local SQLite database.
 
-Проект построен с разделением UI, бизнес-логики, persistence и платформозависимого Android-кода. Фоновый трекинг реализован через Android `LocationManager`, foreground service и WakeLock.
+The project separates the UI, business logic, persistence and platform-specific Android code. Background tracking uses Android `LocationManager`, a foreground service and a WakeLock.
 
-Приложение находится на этапе закрытого тестирования в Google Play перед публичной публикацией.
+The app is in closed testing on Google Play ahead of its public release.
